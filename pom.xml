@@ -269,5 +269,6 @@
 		<module>xmodule2-core-platform-api</module>
 		<module>xmodule2-core-gateway</module>
 		<module>xmodule2-examples-springboot</module>
+		<module>xmodule2-examples-java</module>
 	</modules>
 </project>
