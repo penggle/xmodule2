@@ -2,10 +2,16 @@ package com.penglecode.xmodule.java.reactor;
 
 import java.time.Duration;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
 
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 /**
  * Mono 表示的是包含 0 或者 1 个元素的异步序列。该序列中同样可以包含与 Flux 相同的三种类型的消息通知。
@@ -76,6 +82,54 @@ public class MonoExample {
 		}).subscribe(System.out::println);
 	}
 	
+	/**
+	 * 分页查询
+	 */
+	public static void pagingQuery() {
+		int currentPage = 3;
+		int pageSize = 20;
+		long start = System.currentTimeMillis();
+		//压缩getPagingQueryTotal()和getPagingQueryList()两个Mono为一个，同时指定他们两个为并行模式(因为获取总记录数和获取结果集并无关联，可以并行执行以提高性能)
+		Mono.zip(getPagingQueryTotal().subscribeOn(Schedulers.parallel()), getPagingQueryList(currentPage, pageSize).subscribeOn(Schedulers.parallel()).collectList(), (totalCount, dataList) -> {
+			Map<String,Object> result = new HashMap<String,Object>();
+			result.put("code", 200);
+			result.put("message", "OK");
+			result.put("totalCount", totalCount);
+			result.put("data", dataList);
+			return result;
+		}).subscribe(result -> {
+			long end = System.currentTimeMillis();
+			System.out.println(result);
+			System.out.println(">>> time cost: " + (end - start));
+		});
+		LockSupport.park();
+	}
+	
+	protected static Flux<Map<String,Object>> getPagingQueryList(int currentPage, int pageSize) {
+		return Flux.create(sink -> {
+			Map<String,Object> item = null;
+			for(int i = 0; i < pageSize; i++) {
+				item = new LinkedHashMap<String,Object>();
+				int id = (currentPage - 1) * pageSize + i;
+				item.put("id", id);
+				item.put("name", "user-" + id);
+				item.put("time", System.currentTimeMillis());
+				sink.next(item);
+				System.out.println(String.format("【2】>>> fetch item %s : %s", id, item));
+				LockSupport.parkNanos(TimeUnit.SECONDS.toNanos(1));
+			}
+			sink.complete();
+		});
+	}
+	
+	protected static Mono<Integer> getPagingQueryTotal() {
+		return Mono.fromSupplier(() -> {
+			LockSupport.parkNanos(TimeUnit.SECONDS.toNanos(5));
+			System.out.println("【1】>>> get total count done!");
+			return 1223;
+		});
+	}
+	
 	public static void main(String[] args) {
 		//just();
 		//fromRunnable();
@@ -83,7 +137,8 @@ public class MonoExample {
 		//fromFuture();
 		//fromSupplier();
 		//delay();
-		create();
+		//create();
+		pagingQuery();
 	}
 
 }

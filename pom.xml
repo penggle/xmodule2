@@ -270,5 +270,6 @@
 		<module>xmodule2-core-gateway</module>
 		<module>xmodule2-examples-springboot</module>
 		<module>xmodule2-examples-java</module>
+		<module>xmodule2-examples-webflux</module>
 	</modules>
 </project>
