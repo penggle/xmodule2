@@ -114,8 +114,45 @@ public class SimpleCompletableFutureExample {
 	 */
 	public static void thenAccept() {
 		StringBuilder sb = new StringBuilder("hello");
-		CompletableFuture.completedFuture("world").thenAccept(v -> sb.append(" " + v));
+		CompletableFuture.completedFuture("world").thenAccept(v -> {
+			sb.append(" " + v);
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("12345112");
+		});
 		System.out.println(sb);
+	}
+	
+	/**
+	 * 5、同步消费前一阶段的结果
+	 * 
+	 * 如果下一阶段接收了当前阶段的结果，但是在计算的时候不需要返回值(它的返回类型是void)，
+	 * 那么它可以不应用一个函数，而是一个消费者， 调用方法也变成了thenAccept:
+	 */
+	public static void thenAccept1() {
+		CompletableFuture.supplyAsync(() -> {
+			StringBuilder v = new StringBuilder("hello");
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("state1");
+			return v;
+		}).thenAccept(v -> {
+			v.append(" world");
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			System.out.println("state2");
+		});
+		System.out.println("end");
+		LockSupport.parkNanos(TimeUnit.SECONDS.toNanos(10));
 	}
 	
 	/**
@@ -553,6 +590,7 @@ public class SimpleCompletableFutureExample {
 		//thenApply();
 		//thenApplyAsync();
 		//thenAccept();
+		thenAccept1();
 		//thenAcceptAsync();
 		//completeExceptionally();
 		//exceptionally();
@@ -570,7 +608,7 @@ public class SimpleCompletableFutureExample {
 		//testSyncAndAsync();
 		//testAsyncAndSync1();
 		//testAsyncAndSync2();
-		testAsyncAndSync3();
+		//testAsyncAndSync3();
 	}
 
 }

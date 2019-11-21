@@ -271,5 +271,6 @@
 		<module>xmodule2-examples-springboot</module>
 		<module>xmodule2-examples-java</module>
 		<module>xmodule2-examples-webflux</module>
+		<module>xmodule2-examples-sslcerts</module>
 	</modules>
 </project>

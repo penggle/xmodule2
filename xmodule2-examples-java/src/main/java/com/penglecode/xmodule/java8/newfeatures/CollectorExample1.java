@@ -3,10 +3,12 @@ package com.penglecode.xmodule.java8.newfeatures;
 import java.util.Arrays;
 import java.util.List;
 
-public class CollectorExample {
+public class CollectorExample1 {
 
 	/**
 	 * 求和例子
+	 * 在串行流中，Collector仅会执行初始化器supplier，累加器accumulator
+	 * 合并器combiner不会执行
 	 */
 	public static void syncCollect4Sum() {
 		List<Integer> numbers = Arrays.asList(-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -29,6 +31,7 @@ public class CollectorExample {
 	
 	/**
 	 * 求和例子
+	 * 在并行流中合并器combiner会对任务小计进行合并最终得出最终结果 (类似于ForkJoin)
 	 */
 	public static void asyncCollect4Sum() {
 		List<Integer> numbers = Arrays.asList(-3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
@@ -50,7 +53,7 @@ public class CollectorExample {
 	}
 	
 	public static void main(String[] args) {
-		//syncCollect4Sum();
+		syncCollect4Sum();
 		asyncCollect4Sum();
 	}
 	
