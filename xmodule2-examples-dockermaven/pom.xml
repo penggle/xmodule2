@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.penglecode</groupId>
+		<artifactId>xmodule2</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>xmodule2-examples-dockermaven</artifactId>
+	<name>xmodule2-examples-dockermaven</name>
+	<description>使用docker-maven-plugin插件将项目编译为docker镜像到远程linux服务器的例子</description>
+
+	<dependencies>
+		<!-- xmodule2-common-base -->
+		<dependency>
+			<groupId>com.penglecode</groupId>
+			<artifactId>xmodule2-common-base</artifactId>
+			<version>${xmodule2.version}</version>
+		</dependency>
+
+		<!-- xmodule2-common-support -->
+		<dependency>
+			<groupId>com.penglecode</groupId>
+			<artifactId>xmodule2-common-support</artifactId>
+			<version>${xmodule2.version}</version>
+		</dependency>
+
+		<!-- spring-boot-starter-actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- spring-boot-starter-security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<!-- mysql driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- j2ee web spec -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+
+		<!-- spring-boot-starter-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>xmodule2-examples-dockermaven</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			
+			<plugin>
+			    <groupId>com.spotify</groupId>
+			    <artifactId>dockerfile-maven-plugin</artifactId>
+			    <version>1.4.13</version>
+			    <configuration>
+			    	<repository>registry.cn-hangzhou.aliyuncs.com/pengle/${project.artifactId}</repository>
+ 					<!-- 不指定tag默认为latest -->
+ 					<tag>${project.version}</tag>
+ 					<buildArgs>
+                        <!--提供参数向Dockerfile传递-->
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                    <noCache>true</noCache>
+			    </configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

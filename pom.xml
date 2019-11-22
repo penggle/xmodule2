@@ -264,13 +264,10 @@
 		<module>xmodule2-common-support</module>
 		<module>xmodule2-common-cloud</module>
 		<module>xmodule2-common-security</module>
-		<module>xmodule2-common-app</module>
-		<module>xmodule2-core-platform</module>
-		<module>xmodule2-core-platform-api</module>
-		<module>xmodule2-core-gateway</module>
 		<module>xmodule2-examples-springboot</module>
 		<module>xmodule2-examples-java</module>
 		<module>xmodule2-examples-webflux</module>
 		<module>xmodule2-examples-sslcerts</module>
+		<module>xmodule2-examples-dockermaven</module>
 	</modules>
 </project>
