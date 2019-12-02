@@ -1,6 +1,7 @@
 #应用日志配置
 logging:
-    path: d:/logs
+    file:
+        path: d:/logs
     
 spring:
     datasource:

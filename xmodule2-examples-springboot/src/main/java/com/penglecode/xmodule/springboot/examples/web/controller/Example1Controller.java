@@ -13,7 +13,7 @@ import com.penglecode.xmodule.common.util.DateTimeUtils;
 @RequestMapping("/api/example1")
 public class Example1Controller {
 
-	@GetMapping(value="/nowtime", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value="/nowtime", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Object getNowTime() {
 		return Collections.singletonMap("nowTime", DateTimeUtils.formatNow());
 	}

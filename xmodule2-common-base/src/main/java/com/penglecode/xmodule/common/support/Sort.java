@@ -3,8 +3,6 @@ package com.penglecode.xmodule.common.support;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.ws.rs.QueryParam;
-
 /**
  * 通用排序对象
  * 
@@ -15,7 +13,6 @@ public class Sort implements DtoModel {
 
 	private static final long serialVersionUID = 1L;
 
-	@QueryParam("orders")
 	private List<Order> orders;
 	
 	Sort() {

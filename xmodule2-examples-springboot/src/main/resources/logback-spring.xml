@@ -7,9 +7,9 @@
 <configuration scan="true" scanPeriod="120 seconds">
 
     <!--日志文件名-->
-    <springProperty scope="context" name="logFile" source="logging.file" defaultValue="xmodule2-examples-springboot"/>
+    <springProperty scope="context" name="logFile" source="logging.file.name" defaultValue="xmodule2-examples-springboot"/>
     <!--日志文件路径-->
-    <springProperty scope="context" name="logPath" source="logging.path" defaultValue="${java.io.tmpdir}"/>
+    <springProperty scope="context" name="logPath" source="logging.file.path" defaultValue="${java.io.tmpdir}"/>
 
     <timestamp key="byDay" datePattern="yyyyMMdd"/>
 

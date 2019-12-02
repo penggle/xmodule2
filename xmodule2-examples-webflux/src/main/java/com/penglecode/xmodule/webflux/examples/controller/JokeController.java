@@ -22,7 +22,7 @@ public class JokeController {
 	@Autowired
 	private JokeService jokeService;
 	
-	@GetMapping(value="/list", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value="/list", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Mono<Map<String,Object>> getJokeList(@RequestParam(name="type", defaultValue="") String type,
 			@RequestParam(name="page", defaultValue="1") Integer page,
 			@RequestParam(name="count", defaultValue="10") Integer count) {
@@ -36,7 +36,7 @@ public class JokeController {
 		});
 	}
 	
-	@GetMapping(value="/{sid}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value="/{sid}", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Mono<Map<String,Object>> getJokeBySid(@PathVariable("sid") String sid) {
 		return jokeService.getJokeBySid(sid).map(data -> {
 			Map<String,Object> result = new HashMap<String,Object>();

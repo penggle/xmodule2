@@ -7,7 +7,6 @@ import org.springframework.security.access.AccessDecisionVoter;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.util.Assert;
 
 import com.penglecode.xmodule.common.consts.GlobalConstants;
@@ -98,7 +97,8 @@ public class MultiAppRoleVoter implements AccessDecisionVoter<Object> {
 	 */
 	protected Collection<? extends GrantedAuthority> extractAuthorities(
 			Authentication authentication) {
-		Assert.isInstanceOf(OAuth2Authentication.class, authentication, String.format("Expect the current authentication is typeof %s", OAuth2Authentication.class));
+		//TODO
+		//Assert.isInstanceOf(OAuth2Authentication.class, authentication, String.format("Expect the current authentication is typeof %s", OAuth2Authentication.class));
 		
 		Collection<GrantedAuthority> userAuthorities = new LinkedHashSet<>();
 		Collection<? extends GrantedAuthority> allUserAuthorities = authentication.getAuthorities();

@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
-import org.apache.http.entity.ContentType;
 import org.springframework.http.MediaType;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -110,7 +109,7 @@ public class HttpServletUtils {
      * @param content
      * @throws IOException
      */
-    public static void asynOutputResponse(HttpServletResponse response, ContentType contentType, String content) throws IOException  {
+    public static void asynOutputResponse(HttpServletResponse response, MediaType contentType, String content) throws IOException  {
     	response.setContentType(contentType.toString());
 		response.setCharacterEncoding(contentType.getCharset().toString());    
 		PrintWriter out = response.getWriter();

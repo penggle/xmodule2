@@ -42,7 +42,7 @@ public class RestApiInvokeInterceptor implements MethodInterceptor {
 
 	private ParameterNameDiscoverer defaultarameterNameDiscoverer = new DefaultParameterNameDiscoverer();
 	
-	private MediaType defaultContentType = MediaType.APPLICATION_JSON_UTF8;
+	private MediaType defaultContentType = MediaType.APPLICATION_JSON;
 	
 	private RestTemplate restTemplate = new RestTemplate();
 	

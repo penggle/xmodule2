@@ -10,13 +10,6 @@
 	<name>xmodule2-common-base</name>
 	<description>基础模块，包括基础数据模型、全局常量、全局异常、基础辅助类等</description>
 
-	<dependencies>
-		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<finalName>xmodule2-common-base</finalName>
 	</build>

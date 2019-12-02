@@ -3,8 +3,9 @@ debug: true
 
 #应用日志配置
 logging:
-    file: ${spring.application.name}
     config: classpath:logback-spring.xml
+    file: 
+        name: ${spring.application.name}
 
 #Spring上下文初始化程序
 context:

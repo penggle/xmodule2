@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/host")
 public class HostController {
 
-	@GetMapping(value="/times", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value="/times", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Object getHostTimes() {
 		Map<String,Object> result = new HashMap<String,Object>();
 		result.put("timeZone", TimeZone.getDefault());
@@ -22,7 +22,7 @@ public class HostController {
 		return result;
 	}
 	
-	@GetMapping(value="/envs", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@GetMapping(value="/envs", produces=MediaType.APPLICATION_JSON_VALUE)
 	public Object getHostEnvs() {
 		return System.getenv();
 	}

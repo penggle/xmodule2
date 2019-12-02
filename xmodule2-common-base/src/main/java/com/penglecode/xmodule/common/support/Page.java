@@ -1,7 +1,5 @@
 package com.penglecode.xmodule.common.support;
 
-import javax.ws.rs.QueryParam;
-
 /**
  * 通用分页Page对象
  * 
@@ -15,13 +13,11 @@ public class Page implements DtoModel {
 	/**
 	 * 当前页码
 	 */
-	@QueryParam("currentPage")
 	private Integer currentPage = 1;
 	
 	/**
 	 * 每页显示多少条
 	 */
-	@QueryParam("pageSize")
 	private Integer pageSize = 10;
 	
 	/**

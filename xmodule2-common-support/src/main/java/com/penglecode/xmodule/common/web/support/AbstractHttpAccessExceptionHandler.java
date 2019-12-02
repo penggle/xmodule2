@@ -37,9 +37,9 @@ public abstract class AbstractHttpAccessExceptionHandler implements HttpAccessEx
 	private static final Logger LOGGER = LoggerFactory.getLogger(AbstractHttpAccessExceptionHandler.class);
 	
 	/**
-	 * 默认的响应体类型,默认application/json;charset=UTF-8
+	 * 默认的响应体类型,默认application/json
 	 */
-	private static final MediaType DEFAULT_RESPONSE_CONTENT_TYPE = MediaType.APPLICATION_JSON_UTF8;
+	private static final MediaType DEFAULT_RESPONSE_CONTENT_TYPE = MediaType.APPLICATION_JSON;
 	
 	/**
 	 * 强制指定的响应内容类型
