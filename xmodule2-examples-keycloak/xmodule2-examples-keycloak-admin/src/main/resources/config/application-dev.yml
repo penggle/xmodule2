@@ -1,0 +1,11 @@
+#应用日志配置
+logging:
+    file:
+        path: d:/logs
+
+spring:
+    keycloak:
+        admin:
+            server-url: http://127.0.0.1:8090/auth
+            username: admin
+            password: 123456

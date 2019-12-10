@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.penglecode</groupId>
+		<artifactId>xmodule2</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>xmodule2-examples-keycloak</artifactId>
+	<packaging>pom</packaging>
+	<name>xmodule2-examples-keycloak</name>
+	<description>开源的Identity and Access Management(身份及访问管理)服务示例</description>
+
+	<modules>
+		<module>xmodule2-examples-keycloak-admin</module>
+	</modules>
+</project>

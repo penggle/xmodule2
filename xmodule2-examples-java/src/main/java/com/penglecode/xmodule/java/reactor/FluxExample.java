@@ -2,7 +2,9 @@ package com.penglecode.xmodule.java.reactor;
 
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
@@ -387,7 +389,7 @@ public class FluxExample {
 	 * 
 	 * 消费速度控制
 	 */
-	public static void backpressure() {
+	public static void backpressure1() {
 		Flux.range(1, 6)
 			.doOnRequest(n -> System.out.println("Request " + n + " values...")) //在每次request的时候打印request个数
 			.subscribe(new BaseSubscriber<Integer>() { //自定义Subscriber,用于在特殊场景下控制backpressure
@@ -410,6 +412,46 @@ public class FluxExample {
 					LockSupport.parkNanos(TimeUnit.SECONDS.toNanos(1));
                     System.out.println("Get value [" + value + "]");
                     request(1); //每次处理完1个元素后再请求1个
+				}
+			});
+	}
+	
+	/**
+	 * 回压
+	 * 
+	 * 消费速度控制
+	 */
+	public static void backpressure2() {
+		Flux.range(1, 105)
+			.doOnRequest(n -> System.out.println("Request " + n + " values...")) //在每次request的时候打印request个数
+			.subscribe(new BaseSubscriber<Integer>() { //自定义Subscriber,用于在特殊场景下控制backpressure
+
+				private final int batchs = 10;
+				
+				private final List<Integer> tempList = new ArrayList<Integer>();
+				
+				/**
+				 * 定义在订阅的时候执行的操作
+				 * (该方法仅执行一次)
+				 */
+				@Override
+				protected void hookOnSubscribe(Subscription subscription) {
+					System.out.println("Subscribed and make a request...");
+                    request(batchs); //订阅时首先向上游请求batchs个元素
+				}
+
+				/**
+				 * 定义每次在收到一个元素的时候的操作
+				 */
+				@Override
+				protected void hookOnNext(Integer value) {
+					tempList.add(value);
+					if(tempList.size() == batchs) {
+						LockSupport.parkNanos(TimeUnit.SECONDS.toNanos(1));
+	                    System.out.println("Handling values: " + tempList);
+	                    tempList.clear();
+	                    request(10); //每次处理完1个元素后再请求1个
+					}
 				}
 			});
 	}
@@ -441,7 +483,8 @@ public class FluxExample {
 		//debug();
 		//log();
 		//flatMap();
-		backpressure();
+		//backpressure1();
+		backpressure2();
 	}
 
 }
