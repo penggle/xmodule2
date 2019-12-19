@@ -1,0 +1,19 @@
+#应用日志配置
+logging:
+    file:
+        path: d:/logs
+
+spring:
+    datasource:
+        #默认数据源配置
+        default: 
+            username: root
+            password: 123456
+            url: jdbc:mysql://127.0.0.1:3306/xmodule?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+
+    security:
+        oauth2:
+            #OAuth2资源服务器配置
+            resourceserver:
+                jwt:
+                    jwk-set-uri: http://127.0.0.1:8090/auth/realms/oauth2-simple-examples/protocol/openid-connect/certs

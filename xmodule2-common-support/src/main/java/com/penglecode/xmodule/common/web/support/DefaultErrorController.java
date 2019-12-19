@@ -16,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.penglecode.xmodule.common.support.ExceptionDescriptor;
@@ -49,7 +48,6 @@ public class DefaultErrorController extends BasicErrorController {
 	}
 
 	@RequestMapping
-	@ResponseBody
 	public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
 		Map<String, Object> defaultErrorAttributes = getErrorAttributes(request,
 				isIncludeStackTrace(request, MediaType.ALL));

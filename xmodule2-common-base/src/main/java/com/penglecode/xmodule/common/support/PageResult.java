@@ -1,5 +1,7 @@
 package com.penglecode.xmodule.common.support;
 
+import com.penglecode.xmodule.common.consts.GlobalConstants;
+
 /**
  * 通用返回结果类(针对分页)
  * 
@@ -31,11 +33,11 @@ public class PageResult<T> extends Result<T> {
 	}
 	
 	public static PageBuilder success() {
-		return new PageBuilder(Boolean.TRUE);
+		return new PageBuilder(Boolean.TRUE, GlobalConstants.RESULT_CODE_SUCCESS, "OK");
 	}
 	
 	public static PageBuilder failure() {
-		return new PageBuilder(Boolean.FALSE);
+		return new PageBuilder(Boolean.FALSE, GlobalConstants.RESULT_CODE_FAILURE, "Internal Server Error");
 	}
 	
 	public String toString() {
@@ -47,8 +49,8 @@ public class PageResult<T> extends Result<T> {
 		
 		private int totalRowCount = 0;
 		
-		PageBuilder(boolean success) {
-			super(success);
+		PageBuilder(boolean success, int code, String message) {
+			super(success, code, message);
 		}
 		
 		public PageBuilder totalRowCount(int totalRowCount) {

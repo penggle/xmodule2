@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.penglecode</groupId>
+		<artifactId>xmodule2</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>xmodule2-common-oauth2</artifactId>
+	<name>xmodule2-common-oauth2</name>
+	<description>基于SpringSecurity的OAuth2客户端和资源服务器公共模块</description>
+
+	<dependencies>
+		<!-- xmodule2-common-security -->
+		<dependency>
+			<groupId>com.penglecode</groupId>
+			<artifactId>xmodule2-common-security</artifactId>
+			<version>${xmodule2.version}</version>
+		</dependency>
+		
+		<!-- spring-boot-starter-oauth2-client -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+
+		<!-- spring-boot-starter-oauth2-resource-server -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		
+		<!-- spring5 WebClient support -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webflux</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor.netty</groupId>
+			<artifactId>reactor-netty</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>xmodule2-common-oauth2</finalName>
+	</build>
+</project>

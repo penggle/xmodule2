@@ -89,11 +89,11 @@ public class Result<T> implements DtoModel {
 	}
 	
 	public static Builder success() {
-		return new Builder(Boolean.TRUE);
+		return new Builder(Boolean.TRUE, GlobalConstants.RESULT_CODE_SUCCESS, "OK");
 	}
 	
 	public static Builder failure() {
-		return new Builder(Boolean.FALSE);
+		return new Builder(Boolean.FALSE, GlobalConstants.RESULT_CODE_FAILURE, "Internal Server Error");
 	}
 	
 	public String toString() {
@@ -111,8 +111,10 @@ public class Result<T> implements DtoModel {
 	    
 	    private Object data;
 
-		Builder(boolean success) {
+		Builder(boolean success, int code, String message) {
 			this.success = success;
+			this.code = code;
+			this.message = message;
 		}
 		
 		public Builder code(int code) {

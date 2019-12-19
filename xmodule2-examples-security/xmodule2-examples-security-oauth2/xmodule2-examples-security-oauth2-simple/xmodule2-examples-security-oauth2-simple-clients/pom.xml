@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.penglecode</groupId>
+		<artifactId>xmodule2-examples-security-oauth2-simple</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>xmodule2-examples-security-oauth2-simple-clients</artifactId>
+	<name>xmodule2-examples-security-oauth2-simple-clients</name>
+	<description>基于Spring-Security的OAuth2客户端示例</description>
+
+	<dependencies>
+		<!-- xmodule2-examples-security-oauth2-simple-common -->
+		<dependency>
+			<groupId>com.penglecode</groupId>
+			<artifactId>xmodule2-examples-security-oauth2-simple-common</artifactId>
+			<version>${xmodule2.version}</version>
+		</dependency>
+
+		<!-- xmodule2-common-keycloak -->
+		<dependency>
+			<groupId>com.penglecode</groupId>
+			<artifactId>xmodule2-common-keycloak</artifactId>
+			<version>${xmodule2.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.keycloak</groupId>
+					<artifactId>keycloak-spring-boot-starter</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- mysql driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+		</dependency>
+
+		<!-- j2ee web spec -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+
+		<!-- 内嵌Tomcat对jsp的支持 -->
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+
+		<!-- spring-boot-starter-test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>xmodule2-examples-security-oauth2-simple-clients</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>

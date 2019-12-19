@@ -1,0 +1,68 @@
+#应用日志配置
+logging:
+    file:
+        path: d:/logs
+
+#keycloak配置
+keycloak-admin:
+    server-url: http://127.0.0.1:8090/auth
+    username: admin
+    password: 123456
+
+spring:
+    datasource:
+        #默认数据源配置
+        default: 
+            username: root
+            password: 123456
+            url: jdbc:mysql://127.0.0.1:3306/xmodule?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+            
+    #OAuth2客户端配置
+    security:
+        oauth2:
+            #realm属于自定义字段
+            realm: oauth2-simple-examples
+            client:
+                registration:
+                    #客户端注册名称可自定义
+                    default-client-authorization-code:
+                        #该provider值必须与下面的provider键保持一致
+                        provider: keycloak
+                        client-id: user-client
+                        client-secret: mysecret
+                        authorization-grant-type: authorization_code
+                        redirect-uri: "{baseUrl}/authorize/oauth2/code/{registrationId}"
+                        scope: user
+                        #以下属于自定义字段
+                        description: 用户访问应用API所用
+                        demo-username: tiger
+                        demo-password: 123456
+                    #客户端注册名称可自定义
+                    default-client-client-credentials:
+                        #该provider值必须与下面的provider键保持一致
+                        provider: keycloak
+                        client-id: app-client
+                        client-secret: mysecret
+                        authorization-grant-type: client_credentials
+                        scope: app
+                        #以下属于自定义字段
+                        description: 应用之间相互调用API所用
+                    #客户端注册名称可自定义
+                    default-client-password:
+                        #该provider值必须与下面的provider键保持一致
+                        provider: keycloak
+                        client-id: user-client
+                        client-secret: mysecret
+                        authorization-grant-type: password
+                        scope: user
+                        #以下属于自定义字段
+                        description: 用户访问应用API所用
+                        demo-username: monkey
+                        demo-password: 123456
+                provider:
+                    keycloak:
+                        authorization-uri: ${keycloak-admin.server-url}/realms/${spring.security.oauth2.realm}/protocol/openid-connect/auth
+                        token-uri: ${keycloak-admin.server-url}/realms/${spring.security.oauth2.realm}/protocol/openid-connect/token
+                        
+            examples:
+                resource-server-url: http://127.0.0.1:18080

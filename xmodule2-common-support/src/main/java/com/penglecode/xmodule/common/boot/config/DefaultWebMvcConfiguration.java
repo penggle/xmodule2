@@ -8,7 +8,6 @@ import javax.servlet.Servlet;
 
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication.Type;
@@ -31,7 +30,6 @@ import org.springframework.web.servlet.view.JstlView;
 
 import com.penglecode.xmodule.common.consts.GlobalConstants;
 import com.penglecode.xmodule.common.web.springmvc.handler.AbstractMvcHandlerExceptionResolver;
-import com.penglecode.xmodule.common.web.springmvc.handler.DefaultMvcHandlerExceptionResolver;
 import com.penglecode.xmodule.common.web.springmvc.support.EnhancedRequestMappingHandlerAdapter;
 /**
  * SpringMVC的定制化配置
@@ -58,13 +56,13 @@ public class DefaultWebMvcConfiguration extends AbstractSpringConfiguration impl
 		this.beanFactory = beanFactory;
 	}
 
-	@Bean
+	/*@Bean
 	@ConditionalOnMissingBean
 	public DefaultMvcHandlerExceptionResolver defaultMvcHandlerExceptionResolver() {
 		DefaultMvcHandlerExceptionResolver mvcHandlerExceptionResolver = new DefaultMvcHandlerExceptionResolver();
 		mvcHandlerExceptionResolver.setDefaultExceptionView("/common/error/500.html");
 		return mvcHandlerExceptionResolver;
-	}
+	}*/
 	
 	@Bean
 	public RequestContextFilter requestContextFilter() {
