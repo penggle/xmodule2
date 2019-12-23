@@ -13,6 +13,5 @@
 
 	<modules>
 		<module>xmodule2-examples-keycloak-admin</module>
-		<module>xmodule2-examples-keycloak-vanilla</module>
 	</modules>
 </project>

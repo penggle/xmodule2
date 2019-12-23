@@ -10,6 +10,10 @@
 	<name>xmodule2-common-keycloak</name>
 	<description>Keycloak与SpringBoot、SpringSecurity集成</description>
 
+	<properties>
+		<keycloak.version>8.0.0</keycloak.version>
+	</properties>
+
 	<dependencies>
 		<!-- xmodule2-common-security -->
 		<dependency>
@@ -18,16 +22,11 @@
 			<version>${xmodule2.version}</version>
 		</dependency>
 
-		<!-- keycloak-spring-boot-starter -->
-		<dependency>
-			<groupId>org.keycloak</groupId>
-			<artifactId>keycloak-spring-boot-starter</artifactId>
-		</dependency>
-
 		<!-- keycloak-admin-client -->
 		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-admin-client</artifactId>
+			<version>${keycloak.version}</version>
 		</dependency>
 	</dependencies>
 

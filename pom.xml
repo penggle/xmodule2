@@ -34,7 +34,6 @@
 		<druid.version>1.1.21</druid.version>
 		<mysql.version>5.1.48</mysql.version>
 		<clickhouse.version>0.1.55</clickhouse.version>
-		<keycloak.version>8.0.0</keycloak.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -50,21 +49,6 @@
 				<version>${springcloud.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-			
-			<!-- keycloak -->
-			<dependency>
-			    <groupId>org.keycloak.bom</groupId>
-			    <artifactId>keycloak-adapter-bom</artifactId>
-			    <version>${keycloak.version}</version>
-			    <type>pom</type>
-			    <scope>import</scope>
-			</dependency>
-			
-			<dependency>
-				<groupId>org.keycloak</groupId>
-				<artifactId>keycloak-admin-client</artifactId>
-				<version>${keycloak.version}</version>
 			</dependency>
 
 			<!-- mybatis-spring-boot-starter -->

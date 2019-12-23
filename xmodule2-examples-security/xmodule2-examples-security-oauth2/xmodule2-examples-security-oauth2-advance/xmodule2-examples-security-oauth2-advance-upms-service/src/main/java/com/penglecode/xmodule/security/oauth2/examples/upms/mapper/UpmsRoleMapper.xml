@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.penglecode.xmodule.security.oauth2.examples.upms.mapper.UpmsRoleMapper">
+   
+    <!-- Auto-Generation Code Start -->
+
+    <insert id="insertModel" keyProperty="roleId" parameterType="UpmsRole" statementType="PREPARED" useGeneratedKeys="true">
+        INSERT INTO upms_role(
+            role_id,
+            role_name,
+            role_code,
+            role_type,
+            description,
+            create_time,
+            create_by
+        ) VALUES (
+            #{roleId, jdbcType=BIGINT},
+            #{roleName, jdbcType=VARCHAR},
+            #{roleCode, jdbcType=VARCHAR},
+            #{roleType, jdbcType=TINYINT},
+            #{description, jdbcType=VARCHAR},
+            #{createTime, jdbcType=VARCHAR},
+            #{createBy, jdbcType=BIGINT}
+        )
+    </insert>
+   
+    <update id="updateModelById" parameterType="UpmsRole" statementType="PREPARED">
+        UPDATE upms_role a
+           SET a.role_id = #{id, jdbcType=BIGINT}
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'roleName')">
+               ,a.role_name = #{paramMap.roleName, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'roleCode')">
+               ,a.role_code = #{paramMap.roleCode, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'roleType')">
+               ,a.role_type = #{paramMap.roleType, jdbcType=TINYINT}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'description')">
+               ,a.description = #{paramMap.description, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'createTime')">
+               ,a.create_time = #{paramMap.createTime, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'createBy')">
+               ,a.create_by = #{paramMap.createBy, jdbcType=BIGINT}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'updateTime')">
+               ,a.update_time = #{paramMap.updateTime, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'updateBy')">
+               ,a.update_by = #{paramMap.updateBy, jdbcType=BIGINT}
+            </if>
+         WHERE a.role_id = #{id, jdbcType=BIGINT}
+    </update>
+   
+    <delete id="deleteModelById" parameterType="java.lang.Long" statementType="PREPARED">
+        DELETE FROM upms_role WHERE role_id = #{roleId, jdbcType=BIGINT}
+    </delete>
+   
+    <select id="selectModelById" parameterType="java.lang.Long" resultType="UpmsRole" statementType="PREPARED">
+        SELECT a.role_id	roleId,
+               a.role_name	roleName,
+               a.role_code	roleCode,
+               a.role_type	roleType,
+               a.description	description,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_role a
+         WHERE a.role_id = #{roleId, jdbcType=BIGINT}
+    </select>
+   
+    <select id="selectModelByExample" parameterType="UpmsRole" resultType="UpmsRole" statementType="PREPARED">
+        SELECT a.role_id	roleId,
+               a.role_name	roleName,
+               a.role_code	roleCode,
+               a.role_type	roleType,
+               a.description	description,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_role a
+         WHERE 1=1
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(roleName)">
+           AND a.role_name like CONCAT('%', #{roleName, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(roleCode)">
+           AND a.role_code like CONCAT('%', #{roleCode, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(roleType)">
+           AND a.role_type = #{roleType, jdbcType=TINYINT}
+        </if>
+
+    </select>
+   
+    <select id="selectModelListByIds" parameterType="java.util.List" resultType="UpmsRole" statementType="PREPARED">
+        SELECT a.role_id	roleId,
+               a.role_name	roleName,
+               a.role_code	roleCode,
+               a.role_type	roleType,
+               a.description	description,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_role a
+         WHERE a.role_id in 
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+         ORDER BY a.role_id ASC
+    </select>
+   
+    <select id="selectAllModelList" parameterType="java.util.Map" resultType="UpmsRole" statementType="PREPARED">
+        SELECT a.role_id	roleId,
+               a.role_name	roleName,
+               a.role_code	roleCode,
+               a.role_type	roleType,
+               a.description	description,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_role a
+         WHERE 1=1
+         ORDER BY a.role_id ASC
+    </select>
+   
+    <select id="countAllModelList" parameterType="java.util.Map" resultType="java.lang.Integer" statementType="PREPARED">
+        SELECT count(*)
+          FROM upms_role a
+         WHERE 1=1
+    </select>
+   
+    <select id="selectModelListByExample" parameterType="java.util.Map" resultType="UpmsRole" statementType="PREPARED">
+        SELECT a.role_id	roleId,
+               a.role_name	roleName,
+               a.role_code	roleCode,
+               a.role_type	roleType,
+               a.description	description,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_role a
+         WHERE 1=1
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleName)">
+           AND a.role_name like CONCAT('%', #{example.roleName, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleCode)">
+           AND a.role_code like CONCAT('%', #{example.roleCode, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleType)">
+           AND a.role_type = #{example.roleType, jdbcType=TINYINT}
+        </if>
+        <if test="sort != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(sort.orders)">
+         ORDER BY <foreach collection="sort.orders" index="index" item="item" open="" separator="," close="">${item.property} ${item.direction}</foreach>
+        </if>
+    </select>
+   
+    <select id="selectModelPageListByExample" parameterType="java.util.Map" resultType="UpmsRole" statementType="PREPARED">
+        SELECT a.role_id	roleId,
+               a.role_name	roleName,
+               a.role_code	roleCode,
+               a.role_type	roleType,
+               a.description	description,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_role a
+         WHERE 1=1
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleName)">
+           AND a.role_name like CONCAT('%', #{example.roleName, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleCode)">
+           AND a.role_code like CONCAT('%', #{example.roleCode, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleType)">
+           AND a.role_type = #{example.roleType, jdbcType=TINYINT}
+        </if>
+        <if test="sort != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(sort.orders)">
+         ORDER BY <foreach collection="sort.orders" index="index" item="item" open="" separator="," close="">${item.property} ${item.direction}</foreach>
+        </if>
+    </select>
+   
+    <select id="countModelPageListByExample" parameterType="java.util.Map" resultType="java.lang.Integer" statementType="PREPARED">
+        SELECT count(*)
+          FROM upms_role a
+         WHERE 1=1
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleName)">
+           AND a.role_name like CONCAT('%', #{example.roleName, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleCode)">
+           AND a.role_code like CONCAT('%', #{example.roleCode, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.roleType)">
+           AND a.role_type = #{example.roleType, jdbcType=TINYINT}
+        </if>
+    </select>
+   
+    <!-- Auto-Generation Code End -->
+
+    <!-- Customized Code Start -->
+
+   
+   
+    <!-- Customized Code End -->
+
+</mapper>

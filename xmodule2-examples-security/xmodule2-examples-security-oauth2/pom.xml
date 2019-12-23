@@ -12,5 +12,6 @@
 	<description>SpringSecurity-OAuth2应用示例</description>
 	<modules>
 		<module>xmodule2-examples-security-oauth2-simple</module>
+		<module>xmodule2-examples-security-oauth2-advance</module>
 	</modules>
 </project>

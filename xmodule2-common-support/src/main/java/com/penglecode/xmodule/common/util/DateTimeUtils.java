@@ -1,5 +1,6 @@
 package com.penglecode.xmodule.common.util;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -222,6 +223,24 @@ public class DateTimeUtils {
 			return parse2Date(dateTimeText, DateTimeUtils.DEFAULT_DATETIME_PATTERN);
 		}
 		return null;
+	}
+	
+	/**
+	 * 毫秒时间戳转LocalDateTime
+	 * @param timestamp
+	 * @return
+	 */
+	public static LocalDateTime ofEpochMilli(long timestamp) {
+	    return LocalDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
+	}
+	
+	/**
+	 * LocalDateTime转毫秒时间戳
+	 * @param dateTime
+	 * @return
+	 */
+	public static Long toEpochMilli(LocalDateTime dateTime) {
+		return dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
 	}
 	
 }

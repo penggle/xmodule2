@@ -179,7 +179,6 @@
 		<dependency>
 			<groupId>org.mybatis.generator</groupId>
 			<artifactId>mybatis-generator-core</artifactId>
-			<scope>provided</scope>
 		</dependency>
 
 		<!-- freemarker -->

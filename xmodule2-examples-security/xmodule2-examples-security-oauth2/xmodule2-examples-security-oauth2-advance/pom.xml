@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.penglecode</groupId>
+		<artifactId>xmodule2-examples-security-oauth2</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>xmodule2-examples-security-oauth2-advance</artifactId>
+	<packaging>pom</packaging>
+	<name>xmodule2-examples-security-oauth2-advance</name>
+	<description>基于Spring-Security的OAuth2的客户端、服务端进阶示例</description>
+	<modules>
+		<module>xmodule2-examples-security-oauth2-advance-common</module>
+		<module>xmodule2-examples-security-oauth2-advance-keycloak-upmsuser-spi</module>
+		<module>xmodule2-examples-security-oauth2-advance-resource-server</module>
+		<module>xmodule2-examples-security-oauth2-advance-clients</module>
+		<module>xmodule2-examples-security-oauth2-advance-upms-service</module>
+	</modules>
+</project>

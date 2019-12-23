@@ -16,4 +16,4 @@ spring:
             #OAuth2资源服务器配置
             resourceserver:
                 jwt:
-                    jwk-set-uri: http://127.0.0.1:8090/auth/realms/oauth2-examples/protocol/openid-connect/certs
+                    jwk-set-uri: http://127.0.0.1:8090/auth/realms/oauth2-simple-examples/protocol/openid-connect/certs

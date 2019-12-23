@@ -47,7 +47,7 @@ info:
 #SpringBoot应用的名称
 spring:
     application:
-        name: xmodule2-examples-security-oauth2-clientcredentials-client
+        name: xmodule2-examples-security-oauth2-simple-clients
     #被排除的自动配置
     autoconfigure:
         exclude:

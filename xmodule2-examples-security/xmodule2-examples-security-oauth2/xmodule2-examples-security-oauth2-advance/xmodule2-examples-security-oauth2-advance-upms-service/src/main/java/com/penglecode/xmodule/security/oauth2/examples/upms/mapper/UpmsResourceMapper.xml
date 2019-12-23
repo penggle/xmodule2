@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.penglecode.xmodule.security.oauth2.examples.upms.mapper.UpmsResourceMapper">
+   
+    <!-- Auto-Generation Code Start -->
+
+    <insert id="insertModel" keyProperty="resourceId" parameterType="UpmsResource" statementType="PREPARED" useGeneratedKeys="true">
+        INSERT INTO upms_resource(
+            resource_id,
+            resource_name,
+            parent_resource_id,
+            app_root_resource,
+            resource_url,
+            resource_type,
+            http_method,
+            action_type,
+            siblings_index,
+            resource_icon,
+            index_page,
+            create_time,
+            create_by
+        ) VALUES (
+            #{resourceId, jdbcType=BIGINT},
+            #{resourceName, jdbcType=VARCHAR},
+            #{parentResourceId, jdbcType=BIGINT},
+            #{appRootResource, jdbcType=BOOLEAN},
+            #{resourceUrl, jdbcType=VARCHAR},
+            #{resourceType, jdbcType=TINYINT},
+            #{httpMethod, jdbcType=VARCHAR},
+            #{actionType, jdbcType=TINYINT},
+            #{siblingsIndex, jdbcType=INTEGER},
+            #{resourceIcon, jdbcType=VARCHAR},
+            #{indexPage, jdbcType=BOOLEAN},
+            #{createTime, jdbcType=VARCHAR},
+            #{createBy, jdbcType=BIGINT}
+        )
+    </insert>
+   
+    <update id="updateModelById" parameterType="UpmsResource" statementType="PREPARED">
+        UPDATE upms_resource a
+           SET a.resource_id = #{id, jdbcType=BIGINT}
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'resourceName')">
+               ,a.resource_name = #{paramMap.resourceName, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'parentResourceId')">
+               ,a.parent_resource_id = #{paramMap.parentResourceId, jdbcType=BIGINT}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'appRootResource')">
+               ,a.app_root_resource = #{paramMap.appRootResource, jdbcType=BOOLEAN}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'resourceUrl')">
+               ,a.resource_url = #{paramMap.resourceUrl, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'resourceType')">
+               ,a.resource_type = #{paramMap.resourceType, jdbcType=TINYINT}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'httpMethod')">
+               ,a.http_method = #{paramMap.httpMethod, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'actionType')">
+               ,a.action_type = #{paramMap.actionType, jdbcType=TINYINT}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'siblingsIndex')">
+               ,a.siblings_index = #{paramMap.siblingsIndex, jdbcType=INTEGER}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'resourceIcon')">
+               ,a.resource_icon = #{paramMap.resourceIcon, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'indexPage')">
+               ,a.index_page = #{paramMap.indexPage, jdbcType=BOOLEAN}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'createTime')">
+               ,a.create_time = #{paramMap.createTime, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'createBy')">
+               ,a.create_by = #{paramMap.createBy, jdbcType=BIGINT}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'updateTime')">
+               ,a.update_time = #{paramMap.updateTime, jdbcType=VARCHAR}
+            </if>
+            <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isContainsParameter(paramMap, 'updateBy')">
+               ,a.update_by = #{paramMap.updateBy, jdbcType=BIGINT}
+            </if>
+         WHERE a.resource_id = #{id, jdbcType=BIGINT}
+    </update>
+   
+    <delete id="deleteModelById" parameterType="java.lang.Long" statementType="PREPARED">
+        DELETE FROM upms_resource WHERE resource_id = #{resourceId, jdbcType=BIGINT}
+    </delete>
+   
+    <select id="selectModelById" parameterType="java.lang.Long" resultType="UpmsResource" statementType="PREPARED">
+        SELECT a.resource_id	resourceId,
+               a.resource_name	resourceName,
+               a.parent_resource_id	parentResourceId,
+               a.app_root_resource	appRootResource,
+               a.resource_url	resourceUrl,
+               a.resource_type	resourceType,
+               a.http_method	httpMethod,
+               a.action_type	actionType,
+               a.siblings_index	siblingsIndex,
+               a.resource_icon	resourceIcon,
+               a.index_page	indexPage,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_resource a
+         WHERE a.resource_id = #{resourceId, jdbcType=BIGINT}
+    </select>
+   
+    <select id="selectModelByExample" parameterType="UpmsResource" resultType="UpmsResource" statementType="PREPARED">
+        SELECT a.resource_id	resourceId,
+               a.resource_name	resourceName,
+               a.parent_resource_id	parentResourceId,
+               a.app_root_resource	appRootResource,
+               a.resource_url	resourceUrl,
+               a.resource_type	resourceType,
+               a.http_method	httpMethod,
+               a.action_type	actionType,
+               a.siblings_index	siblingsIndex,
+               a.resource_icon	resourceIcon,
+               a.index_page	indexPage,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_resource a
+         WHERE 1=1
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(resourceName)">
+           AND a.resource_name like CONCAT('%', #{resourceName, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(parentResourceId)">
+           AND a.parent_resource_id = #{parentResourceId, jdbcType=BIGINT}
+        </if>
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(appRootResource)">
+           AND a.app_root_resource = #{appRootResource, jdbcType=BOOLEAN}
+        </if>
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(resourceUrl)">
+           AND a.resource_url like CONCAT('%', #{resourceUrl, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(resourceType)">
+           AND a.resource_type = #{resourceType, jdbcType=TINYINT}
+        </if>
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(actionType)">
+           AND a.action_type = #{actionType, jdbcType=TINYINT}
+        </if>
+        <if test="@com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(indexPage)">
+           AND a.index_page = #{indexPage, jdbcType=BOOLEAN}
+        </if>
+
+    </select>
+   
+    <select id="selectModelListByIds" parameterType="java.util.List" resultType="UpmsResource" statementType="PREPARED">
+        SELECT a.resource_id	resourceId,
+               a.resource_name	resourceName,
+               a.parent_resource_id	parentResourceId,
+               a.app_root_resource	appRootResource,
+               a.resource_url	resourceUrl,
+               a.resource_type	resourceType,
+               a.http_method	httpMethod,
+               a.action_type	actionType,
+               a.siblings_index	siblingsIndex,
+               a.resource_icon	resourceIcon,
+               a.index_page	indexPage,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_resource a
+         WHERE a.resource_id in 
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+         ORDER BY a.resource_id ASC
+    </select>
+   
+    <select id="selectAllModelList" parameterType="java.util.Map" resultType="UpmsResource" statementType="PREPARED">
+        SELECT a.resource_id	resourceId,
+               a.resource_name	resourceName,
+               a.parent_resource_id	parentResourceId,
+               a.app_root_resource	appRootResource,
+               a.resource_url	resourceUrl,
+               a.resource_type	resourceType,
+               a.http_method	httpMethod,
+               a.action_type	actionType,
+               a.siblings_index	siblingsIndex,
+               a.resource_icon	resourceIcon,
+               a.index_page	indexPage,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_resource a
+         WHERE 1=1
+         ORDER BY a.resource_id ASC
+    </select>
+   
+    <select id="countAllModelList" parameterType="java.util.Map" resultType="java.lang.Integer" statementType="PREPARED">
+        SELECT count(*)
+          FROM upms_resource a
+         WHERE 1=1
+    </select>
+   
+    <select id="selectModelListByExample" parameterType="java.util.Map" resultType="UpmsResource" statementType="PREPARED">
+        SELECT a.resource_id	resourceId,
+               a.resource_name	resourceName,
+               a.parent_resource_id	parentResourceId,
+               a.app_root_resource	appRootResource,
+               a.resource_url	resourceUrl,
+               a.resource_type	resourceType,
+               a.http_method	httpMethod,
+               a.action_type	actionType,
+               a.siblings_index	siblingsIndex,
+               a.resource_icon	resourceIcon,
+               a.index_page	indexPage,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_resource a
+         WHERE 1=1
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceName)">
+           AND a.resource_name like CONCAT('%', #{example.resourceName, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.parentResourceId)">
+           AND a.parent_resource_id = #{example.parentResourceId, jdbcType=BIGINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.appRootResource)">
+           AND a.app_root_resource = #{example.appRootResource, jdbcType=BOOLEAN}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceUrl)">
+           AND a.resource_url like CONCAT('%', #{example.resourceUrl, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceType)">
+           AND a.resource_type = #{example.resourceType, jdbcType=TINYINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.actionType)">
+           AND a.action_type = #{example.actionType, jdbcType=TINYINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.indexPage)">
+           AND a.index_page = #{example.indexPage, jdbcType=BOOLEAN}
+        </if>
+        <if test="sort != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(sort.orders)">
+         ORDER BY <foreach collection="sort.orders" index="index" item="item" open="" separator="," close="">${item.property} ${item.direction}</foreach>
+        </if>
+    </select>
+   
+    <select id="selectModelPageListByExample" parameterType="java.util.Map" resultType="UpmsResource" statementType="PREPARED">
+        SELECT a.resource_id	resourceId,
+               a.resource_name	resourceName,
+               a.parent_resource_id	parentResourceId,
+               a.app_root_resource	appRootResource,
+               a.resource_url	resourceUrl,
+               a.resource_type	resourceType,
+               a.http_method	httpMethod,
+               a.action_type	actionType,
+               a.siblings_index	siblingsIndex,
+               a.resource_icon	resourceIcon,
+               a.index_page	indexPage,
+               DATE_FORMAT(a.create_time, '%Y-%m-%d %T')	createTime,
+               a.create_by	createBy,
+               DATE_FORMAT(a.update_time, '%Y-%m-%d %T')	updateTime,
+               a.update_by	updateBy
+          FROM upms_resource a
+         WHERE 1=1
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceName)">
+           AND a.resource_name like CONCAT('%', #{example.resourceName, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.parentResourceId)">
+           AND a.parent_resource_id = #{example.parentResourceId, jdbcType=BIGINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.appRootResource)">
+           AND a.app_root_resource = #{example.appRootResource, jdbcType=BOOLEAN}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceUrl)">
+           AND a.resource_url like CONCAT('%', #{example.resourceUrl, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceType)">
+           AND a.resource_type = #{example.resourceType, jdbcType=TINYINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.actionType)">
+           AND a.action_type = #{example.actionType, jdbcType=TINYINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.indexPage)">
+           AND a.index_page = #{example.indexPage, jdbcType=BOOLEAN}
+        </if>
+        <if test="sort != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(sort.orders)">
+         ORDER BY <foreach collection="sort.orders" index="index" item="item" open="" separator="," close="">${item.property} ${item.direction}</foreach>
+        </if>
+    </select>
+   
+    <select id="countModelPageListByExample" parameterType="java.util.Map" resultType="java.lang.Integer" statementType="PREPARED">
+        SELECT count(*)
+          FROM upms_resource a
+         WHERE 1=1
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceName)">
+           AND a.resource_name like CONCAT('%', #{example.resourceName, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.parentResourceId)">
+           AND a.parent_resource_id = #{example.parentResourceId, jdbcType=BIGINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.appRootResource)">
+           AND a.app_root_resource = #{example.appRootResource, jdbcType=BOOLEAN}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceUrl)">
+           AND a.resource_url like CONCAT('%', #{example.resourceUrl, jdbcType=VARCHAR}, '%')
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.resourceType)">
+           AND a.resource_type = #{example.resourceType, jdbcType=TINYINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.actionType)">
+           AND a.action_type = #{example.actionType, jdbcType=TINYINT}
+        </if>
+        <if test="example != null and @com.penglecode.xmodule.common.mybatis.MybatisUtils@isNotEmpty(example.indexPage)">
+           AND a.index_page = #{example.indexPage, jdbcType=BOOLEAN}
+        </if>
+    </select>
+   
+    <!-- Auto-Generation Code End -->
+
+    <!-- Customized Code Start -->
+
+   
+   
+    <!-- Customized Code End -->
+
+</mapper>

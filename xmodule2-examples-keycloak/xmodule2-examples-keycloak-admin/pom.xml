@@ -10,6 +10,10 @@
 	<name>xmodule2-examples-keycloak-admin</name>
 	<description>Keycloak Admin Java Client 使用示例</description>
 
+	<properties>
+		<keycloak.version>8.0.0</keycloak.version>
+	</properties>
+
 	<dependencies>
 		<!-- xmodule2-common-base -->
 		<dependency>
@@ -41,6 +45,7 @@
 		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-admin-client</artifactId>
+			<version>${keycloak.version}</version>
 		</dependency>
 
 		<!-- j2ee web spec -->
