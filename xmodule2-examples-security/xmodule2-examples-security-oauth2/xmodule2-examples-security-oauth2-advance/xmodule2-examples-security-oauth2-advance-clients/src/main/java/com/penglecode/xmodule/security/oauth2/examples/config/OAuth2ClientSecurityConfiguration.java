@@ -21,7 +21,7 @@ public class OAuth2ClientSecurityConfiguration extends WebSecurityConfigurerAdap
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-	  return SecurityApplicationConstants.DEFAULT_PASSWORD_ENCODER;
+		return SecurityApplicationConstants.DEFAULT_PASSWORD_ENCODER;
 	}
 	
 	@Override
