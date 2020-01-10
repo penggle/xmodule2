@@ -16,5 +16,8 @@
 		<module>xmodule2-examples-security-oauth2-advance-resource-server</module>
 		<module>xmodule2-examples-security-oauth2-advance-clients</module>
 		<module>xmodule2-examples-security-oauth2-advance-upms-service</module>
+		<module>
+			xmodule2-examples-security-oauth2-advance-keycloak-upmsstorage-spi
+		</module>
 	</modules>
 </project>

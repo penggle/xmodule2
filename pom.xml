@@ -212,22 +212,21 @@
 			</plugins>
 		</pluginManagement>
 		<resources>
-			<!-- 编译之后包含xml -->
+			<!-- 编译之后包含xml|ftl -->
 			<resource>
 				<directory>src/main/java</directory>
 				<includes>
 					<include>**/*.xml</include>
 					<include>**/*.ftl</include>
 				</includes>
+				<!-- false:不进行maven属性替换 -->
 				<filtering>false</filtering>
 			</resource>
-			<!-- 编译之后包含xml和properties -->
+			<!-- 编译之后包含resources下面的所有 -->
 			<resource>
 				<directory>src/main/resources</directory>
-				<includes>
-					<include>**/*</include>
-				</includes>
-				<filtering>false</filtering>
+				<!-- true:进行maven属性替换 -->
+				<filtering>true</filtering>
 			</resource>
 		</resources>
 	</build>
